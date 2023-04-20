@@ -53,9 +53,11 @@ call_that_plumber_start <- function(api_folder = NULL,
   error_file <- tempfile()
   rs$call(function(ap, prt, docs, ef) {
     
-    #file_list <- list.files(path = "../R", pattern = ".R$", full.names = TRUE)
-    #for (i in 1:length(file_list)) { source(file_list[i]) }
+    file_list <- list.files(path = "app/R", pattern = ".R$", full.names = TRUE)
+    if (length(file_list) > 0 ) { for (i in 1:length(file_list)) { source(file_list[i]) } }
+    
     plumber::pr_run(pr = plumber::pr(ap), port = prt, docs = docs)
+    
     #try(plumber::pr_run(pr = plumber::pr(ap), port = prt, docs = docs), outFile = ef)
   },
   args = list(ap = api_path, prt = port, docs = docs, ef = error_file)
