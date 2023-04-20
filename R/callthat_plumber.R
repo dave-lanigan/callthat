@@ -44,7 +44,9 @@ call_that_plumber_start <- function(api_folder = NULL,
                                     check_delay = 1) {
   if (is.null(api_folder)) stop("No API folder location passed")
 
+  print(api_folder)
   api_path <- path(api_folder, api_file)
+  print(api_path)
 
   if (!file_exists(api_path)) stop(paste0("Invalid plumber file path"))
 
