@@ -43,12 +43,8 @@ call_that_plumber_start <- function(api_folder = NULL,
                                     host = "http://127.0.0.1",
                                     check_delay = 1) {
   if (is.null(api_folder)) stop("No API folder location passed")
-
-  print(api_folder)
-  api_path <- path(api_folder, api_file)
-  print(api_path)
-
-  if (!file_exists(api_path)) stop(paste0("Invalid plumber file path"))
+  api_path <- fs::path(api_folder, api_file)
+  if (!fs::file_exists(api_path)) stop(paste0("Invalid plumber file path"))
 
   r_safe(function(x) {})
   rs <- r_session$new()
